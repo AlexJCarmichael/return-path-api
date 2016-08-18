@@ -1,12 +1,32 @@
 /* globals React */
 /* exported RequestHolder */
 var RequestHolder = React.createClass({
+  getInitialState: function() {
+    return {
+      displayMode: "empty"
+    };
+  },
+
+  handleClick: function(event) {
+    console.log(event);
+  },
+
+  renderControl: function() {
+
+  },
+
   buttonBar: function() {
       return (
         <div className="row">
-          <div className="button two columns">Links</div>
-          <div className="button three columns">Comments</div>
-          <div className="button two columns">Votes</div>
+          <div className="button two columns" onClick={this.handleClick()}>
+            Links
+          </div>
+          <div className="button three columns" onClick={this.handleClick()}>
+            Comments
+          </div>
+          <div className="button two columns" onClick={this.handleClick()}>
+            Votes
+          </div>
         </div>
       );
   },
