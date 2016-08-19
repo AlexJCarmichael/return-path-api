@@ -19,9 +19,10 @@ var Index = React.createClass({
     if (this.props.attr === "links") {
       return (
         this.state.allObjects.map(function(link) {
-          return (<LinkDislay key={link.id}
-                                 url={link.url}
-                                 title={link.title}/>);
+          return (<LinkDisplay key={link.id}
+                               id={link.id}
+                               url={link.url}
+                               title={link.title}/>);
         })
       );
     }
