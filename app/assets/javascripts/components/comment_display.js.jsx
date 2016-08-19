@@ -20,8 +20,14 @@ var CommentDisplay = React.createClass({
           <strong> Comment: </strong>
           {this.props.body}
         </p>
-        <div className="button" onClick={this.destroyComment}>
-          Delete
+        <div className="row">
+          <div className="button u-pull-left" onClick={this.destroyComment}>
+            Delete
+          </div>
+          <p className="u-pull-right">
+            <strong>Votes: </strong>
+            {this.props.votesCount}
+          </p>
         </div>
       </div>
     );

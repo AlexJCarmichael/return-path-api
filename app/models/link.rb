@@ -10,6 +10,7 @@ class Link < ApplicationRecord
   end
 
   def as_json(_= nil)
-    super(methods: [:aggregate_vote_count])
+    super(include: [:comments],
+          methods: [:aggregate_vote_count])
   end
 end

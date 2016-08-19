@@ -22,7 +22,8 @@ var CommentsIndex = React.createClass({
           {this.state.allComments.map(function(comment) {
             return (<CommentDisplay key={comment.id}
                                     id={comment.id}
-                                    body={comment.body}/>);
+                                    body={comment.body}
+                                    votesCount={comment.aggregate_vote_count}/>);
           })}
         </div>
       </div>
