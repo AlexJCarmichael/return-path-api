@@ -25,7 +25,7 @@ var CommentDisplay = React.createClass({
             Delete
           </div>
           <p className="u-pull-right">
-            <strong>Votes: </strong>
+            <strong>Aggregate Votes: </strong>
             {this.props.votesCount}
           </p>
         </div>
