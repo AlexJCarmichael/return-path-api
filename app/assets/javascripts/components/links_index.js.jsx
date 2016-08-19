@@ -28,7 +28,7 @@ var LinksIndex = React.createClass({
                                  title={link.title}
                                  url={link.url}
                                  commentsCount={link.comments.length}
-                                 commentsArr={link.comments}
+                                 commentsArr={link.sorted_comments}
                                  votesCount={link.aggregate_vote_count}/>);
           })}
         </div>

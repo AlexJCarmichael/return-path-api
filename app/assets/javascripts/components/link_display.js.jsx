@@ -1,6 +1,11 @@
 /* globals React */
 /* exported LinkDisplay */
 var LinkDisplay = React.createClass({
+  getInitialState: function () {
+    return {
+      hidden: true
+    };
+  },
 
   destroyLink: function () {
     var that = this;
@@ -17,8 +22,20 @@ var LinkDisplay = React.createClass({
     return ("#comment-holder" + this.props.id);
   },
 
+  classNames: function() {
+    if (this.state.hidden === true) {
+      return (
+        "hidden full-info"
+      );
+    } else {
+      return (
+        "full-info"
+      );
+    }
+  },
+
   showFullInfo: function(event) {
-    $(event.target).parent().parent().find(".full-info").toggleClass("hidden");
+    this.setState({hidden: !this.state.hidden});
   },
 
   render: function() {
@@ -39,7 +56,7 @@ var LinkDisplay = React.createClass({
                       voteId={this.props.id}
                       votesCount={this.props.votesCount}/>
         </div>
-        <div className="hidden full-info">
+        <div className={this.classNames()}>
         <div onClick={this.destroyLink} className="button danger">
           Delete Link
         </div>
