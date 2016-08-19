@@ -9,7 +9,7 @@ class Api::V1::VotesController < ApplicationController
       render json: { respone: "Success",
                      data: Vote.find(params.fetch(:id)) }
     else
-      render json: { response: "Vote does not exist" }, status: 400
+      render json: { response: "Vote does not exist" }, status: 404
     end
   end
 
@@ -20,7 +20,7 @@ class Api::V1::VotesController < ApplicationController
                      data: vote}
     else
       render json: { response: "Vote could not be created",
-                     data: vote.errors }
+                     data: vote.errors, status: 422}
     end
   end
 
@@ -30,7 +30,7 @@ class Api::V1::VotesController < ApplicationController
       vote.destroy
       render json: { response: "Vote destroyed" }
     else
-      render json: { response: "Vote does not exist" }, status: 400
+      render json: { response: "Vote does not exist" }, status: 422
     end
   end
 

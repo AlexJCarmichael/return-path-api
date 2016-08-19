@@ -1,7 +1,7 @@
 class Api::V1::CommentsController < ApplicationController
   def index
     render json: { response: "Success",
-                   data: Comment.all.sort_by { |comment| - comment.aggregate_vote_count } }
+                   data: Comment.all.sort_by { |comment| comment.aggregate_vote_count * -1 } }
   end
 
   def show
@@ -9,7 +9,7 @@ class Api::V1::CommentsController < ApplicationController
       render json: { respone: "Success",
                      data: Comment.find(params.fetch(:id)) }
     else
-      render json: { response: "Comment does not exist" }, status: 400
+      render json: { response: "Comment does not exist" }, status: 404
     end
   end
 
@@ -20,7 +20,7 @@ class Api::V1::CommentsController < ApplicationController
                      data: comment}
     else
       render json: { response: "Comment could not be created",
-                     data: comment.errors }
+                     data: comment.errors }, status: 422
     end
   end
 
@@ -30,7 +30,7 @@ class Api::V1::CommentsController < ApplicationController
       comment.destroy
       render json: { response: "Comment destroyed" }
     else
-      render json: { response: "Comment does not exist" }, status: 400
+      render json: { response: "Comment does not exist" }, status: 422
     end
   end
 

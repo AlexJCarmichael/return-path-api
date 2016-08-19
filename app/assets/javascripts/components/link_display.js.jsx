@@ -13,6 +13,10 @@ var LinkDisplay = React.createClass({
     });
   },
 
+  holderName: function() {
+    return ("#comment-holder" + this.props.id);
+  },
+
   showFullInfo: function(event) {
     $(event.target).parent().parent().find(".full-info").toggleClass("hidden");
   },
@@ -40,13 +44,18 @@ var LinkDisplay = React.createClass({
           Delete Link
         </div>
           <h5 className="small-top-margin">Comments ({this.props.commentsCount}):</h5>
-          {this.props.commentsArr.map(function(comment) {
-            return (<CommentDisplay key={comment.id}
-                                    id={comment.id}
-                                    body={comment.body}
-                                    votesCount={comment.aggregate_vote_count}
-                                    subLinks={true}/>);
-          })}
+          <div>
+            <CommentForm linkId={this.props.id}/>
+          </div>
+            <div className={this.holderName()}>
+            {this.props.commentsArr.map(function(comment) {
+              return (<CommentDisplay key={comment.id}
+                                      id={comment.id}
+                                      body={comment.body}
+                                      votesCount={comment.aggregate_vote_count}
+                                      subLinks={true}/>);
+            })}
+          </div>
         </div>
       </div>
     );

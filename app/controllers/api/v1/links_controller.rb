@@ -1,7 +1,7 @@
 class Api::V1::LinksController < ApplicationController
   def index
     render json: { response: "Success",
-                   data: Link.all.sort_by { |link| - link.aggregate_vote_count } }
+                   data: Link.all.sort_by { |link| link.aggregate_vote_count * -1 } }
   end
 
   def show
@@ -9,7 +9,7 @@ class Api::V1::LinksController < ApplicationController
       render json: { respone: "Success",
                      data: Link.find(params.fetch(:id)) }
     else
-      render json: { response: "Link does not exist" }, status: 400
+      render json: { response: "Link does not exist" }, status: 404
     end
   end
 
@@ -20,7 +20,7 @@ class Api::V1::LinksController < ApplicationController
                      data: link}
     else
       render json: { response: "Link could not be created",
-                     data: link.errors }
+                     data: link.errors }, status: 422
     end
   end
 
@@ -30,7 +30,7 @@ class Api::V1::LinksController < ApplicationController
       link.destroy
       render json: { response: "Link destroyed" }
     else
-      render json: { response: "Link does not exist" }, status: 400
+      render json: { response: "Link does not exist" }, status: 422
     end
   end
 

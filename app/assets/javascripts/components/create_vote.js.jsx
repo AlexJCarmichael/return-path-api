@@ -8,7 +8,6 @@ var CreateVote = React.createClass({
   },
 
   postVote: function(string) {
-    var currentCount = this.state.votesCount;
     var that = this;
     $.ajax({
       method: "POST",
@@ -20,13 +19,11 @@ var CreateVote = React.createClass({
           vote_type: string
         }
       },
-    success: function(response) {
+    success: function() {
         if (string === "up") {
-            currentCount ++;
-            that.setState({votesCount: currentCount});
+            that.setState({votesCount: that.state.votesCount + 1});
         } else {
-          currentCount --;
-          that.setState({votesCount: currentCount});
+          that.setState({votesCount: that.state.votesCount - 1});
         }
       }
     });

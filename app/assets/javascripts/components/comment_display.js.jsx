@@ -15,7 +15,7 @@ var CommentDisplay = React.createClass({
   parentClassName: function() {
     if (this.props.subLinks === true) {
       return (
-        "card inLinks"
+        "card in-links"
       );
     } else {
       return (

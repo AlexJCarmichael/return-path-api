@@ -49,7 +49,7 @@ var LinkForm = React.createClass({
         </div>`);
     },
     error: function(response) {
-        $("#error").append("<h6 id='error-field'>" + response.data + "</h6>");
+          $("#link-errors").append("<h6 id='error'>" + response.responseText + "</h6>");
     }
 });
   },
