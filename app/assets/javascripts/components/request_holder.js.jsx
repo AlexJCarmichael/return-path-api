@@ -3,7 +3,8 @@
 var RequestHolder = React.createClass({
   getInitialState: function() {
     return {
-      displayMode: "empty"
+      displayMode: "empty",
+      displayForm: false
     };
   },
 
@@ -14,15 +15,15 @@ var RequestHolder = React.createClass({
   renderControl: function() {
     if (this.state.displayMode === "links") {
       return (
-        <Index attr="links"/>
+        <LinksIndex />
       );
     } else if (this.state.displayMode === "comments") {
         return (
-          <Index attr="comments"/>
+          <CommentsIndex />
         );
     } else if (this.state.displayMode === "votes") {
         return (
-          <Index attr="votes"/>
+          <VotesIndex />
         );
     } else {
       return (
