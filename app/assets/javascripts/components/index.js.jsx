@@ -15,6 +15,14 @@ var Index = React.createClass({
     });
   },
 
+  componentDidUpdate: function() {
+    var that = this;
+    var url = "/api/v1/" + this.props.attr;
+    $.getJSON(url, function(response) {
+      that.setState({allObjects: response.data});
+    });
+  },
+
   whichMap: function() {
     if (this.props.attr === "links") {
       return (
