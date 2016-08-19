@@ -25,6 +25,24 @@ var Index = React.createClass({
                                title={link.title}/>);
         })
       );
+    } else if (this.props.attr === "comments") {
+      return (
+        this.state.allObjects.map(function(comment) {
+          return (<CommentDisplay key={comment.id}
+                                  id={comment.id}
+                                  body={comment.body}/>);
+        })
+      );
+    } else if (this.props.attr === "votes") {
+      return (
+        this.state.allObjects.map(function(vote) {
+          return (<VoteDisplay key={vote.id}
+                                  id={vote.id}
+                                  voteType={vote.vote_type}
+                                  objectId={vote.votable_id}
+                                  objectType={vote.votable_type}/>);
+        })
+      );
     }
   },
 
