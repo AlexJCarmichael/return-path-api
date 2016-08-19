@@ -18,7 +18,7 @@
 .card {
   border: 1px solid black;
   margin-bottom: .5em;
-  p, .button {
+  p, .button, label, input {
     margin: .25em .5em;
   }
 }

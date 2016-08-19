@@ -3,8 +3,7 @@
 var RequestHolder = React.createClass({
   getInitialState: function() {
     return {
-      displayMode: "empty",
-      displayForm: false
+      displayMode: "empty"
     };
   },
 

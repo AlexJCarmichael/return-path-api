@@ -18,7 +18,10 @@ var LinksIndex = React.createClass({
   render: function() {
     return (
       <div>
-        <div id="object-holder">
+        <div>
+          <LinkForm />
+        </div>
+        <div id="link-holder">
           {this.state.allLinks.map(function(link) {
             return (<LinkDisplay key={link.id}
                                  id={link.id}
