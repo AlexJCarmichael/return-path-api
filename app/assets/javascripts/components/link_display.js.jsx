@@ -24,8 +24,14 @@ var LinkDisplay = React.createClass({
           <strong> Url: </strong>
           {this.props.url}
         </p>
-        <div className="button" onClick={this.destroyLink}>
-          Delete
+        <div className="row">
+          <div className="button u-pull-left" onClick={this.destroyLink}>
+            Delete
+          </div>
+          <p className="u-pull-right">
+            <strong>Votes: </strong>
+            {this.props.votesCount}
+          </p>
         </div>
       </div>
     );

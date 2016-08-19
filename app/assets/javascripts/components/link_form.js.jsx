@@ -79,6 +79,9 @@ var LinkForm = React.createClass({
           <div className="button" onClick={this.postLink}>
             Submit
           </div>
+          <div className="button" onClick={this.handleClick}>
+            Close
+          </div>
         </div>
       );
     }

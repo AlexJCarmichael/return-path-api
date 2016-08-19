@@ -26,7 +26,8 @@ var LinksIndex = React.createClass({
             return (<LinkDisplay key={link.id}
                                  id={link.id}
                                  title={link.title}
-                                 url={link.url}/>);
+                                 url={link.url}
+                                 votesCount={link.aggregate_vote_count}/>);
           })}
         </div>
       </div>
