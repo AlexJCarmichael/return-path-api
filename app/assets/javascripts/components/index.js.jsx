@@ -7,7 +7,7 @@ var Index = React.createClass({
     };
   },
 
-  componentDidMount: function() {
+  indexAjaxCall: function() {
     var that = this;
     var url = "/api/v1/" + this.props.attr;
     $.getJSON(url, function(response) {
@@ -15,12 +15,12 @@ var Index = React.createClass({
     });
   },
 
+  componentDidMount: function() {
+    this.indexAjaxCall();
+  },
+
   componentDidUpdate: function() {
-    var that = this;
-    var url = "/api/v1/" + this.props.attr;
-    $.getJSON(url, function(response) {
-      that.setState({allObjects: response.data});
-    });
+    this.indexAjaxCall();
   },
 
   whichMap: function() {
