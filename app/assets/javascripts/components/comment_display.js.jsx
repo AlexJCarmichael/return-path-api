@@ -1,7 +1,6 @@
 /* globals React */
 /* exported CommentDisplay */
 var CommentDisplay = React.createClass({
-
   destroyComment: function () {
     var that = this;
     $.ajax({
@@ -13,21 +12,34 @@ var CommentDisplay = React.createClass({
     });
   },
 
+  parentClassName: function() {
+    if (this.props.subLinks === true) {
+      return (
+        "card inLinks"
+      );
+    } else {
+      return (
+        "card"
+      );
+    }
+  },
+
   render: function() {
     return (
-      <div className="card">
+      <div className={this.parentClassName()}>
         <p>
           <strong> Comment: </strong>
           {this.props.body}
         </p>
         <div className="row">
-          <div className="button u-pull-left" onClick={this.destroyComment}>
-            Delete
+          <CreateVote voteType={"Comment"}
+                      voteId={this.props.id}
+                      votesCount={this.props.votesCount}/>
+        </div>
+        <div className>
+          <div className="button danger" onClick={this.destroyComment}>
+            Delete Comment
           </div>
-          <p className="u-pull-right">
-            <strong>Aggregate Votes: </strong>
-            {this.props.votesCount}
-          </p>
         </div>
       </div>
     );

@@ -32,3 +32,17 @@
     cursor: pointer;
   }
 }
+
+.small-top-margin {
+  margin-top: 1em;
+}
+
+.card.inLinks {
+  width: 85%;
+  border-left: 0px;
+}
+
+.danger {
+  background-color: red;
+  color: white;
+}

@@ -28,7 +28,7 @@ var VoteDisplay = React.createClass({
           <strong> Object id: </strong>
           {this.props.objectId}
         </p>
-        <div className="button" onClick={this.destroyVote}>
+        <div className="button danger" onClick={this.destroyVote}>
           Delete
         </div>
       </div>

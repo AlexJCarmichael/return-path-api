@@ -14,7 +14,6 @@ var LinkDisplay = React.createClass({
   },
 
   showFullInfo: function(event) {
-    console.log(event.target);
     $(event.target).parent().parent().find(".full-info").toggleClass("hidden");
   },
 
@@ -37,9 +36,17 @@ var LinkDisplay = React.createClass({
                       votesCount={this.props.votesCount}/>
         </div>
         <div className="hidden full-info">
-        <div onClick={this.destroyLink} className="button">
+        <div onClick={this.destroyLink} className="button danger">
           Delete Link
         </div>
+          <h5 className="small-top-margin">Comments ({this.props.commentsCount}):</h5>
+          {this.props.commentsArr.map(function(comment) {
+            return (<CommentDisplay key={comment.id}
+                                    id={comment.id}
+                                    body={comment.body}
+                                    votesCount={comment.aggregate_vote_count}
+                                    subLinks={true}/>);
+          })}
         </div>
       </div>
     );

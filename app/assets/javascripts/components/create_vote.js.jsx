@@ -42,7 +42,7 @@ var CreateVote = React.createClass({
           <p className="button" onClick={this.postVote.bind(this, "down")}>Down Vote</p>
         </div>
         <div className="four columns">
-          Aggregate Votes: {this.state.votesCount}
+          <strong>Aggregate Votes: </strong> {this.state.votesCount}
         </div>
       </div>
     );
