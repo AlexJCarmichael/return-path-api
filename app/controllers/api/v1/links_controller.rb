@@ -1,7 +1,7 @@
 class Api::V1::LinksController < ApplicationController
   def index
     render json: { response: "Success",
-                   data: Link.all }
+                   data: Link.all.sort_by { |link| - link.aggregate_vote_count } }
   end
 
   def show

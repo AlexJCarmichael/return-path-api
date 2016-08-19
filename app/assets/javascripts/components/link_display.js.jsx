@@ -13,25 +13,33 @@ var LinkDisplay = React.createClass({
     });
   },
 
+  showFullInfo: function(event) {
+    console.log(event.target);
+    $(event.target).parent().parent().find(".full-info").toggleClass("hidden");
+  },
+
   render: function() {
     return (
       <div className="card">
-        <p>
-          <strong> Link: </strong>
-          {this.props.title}
-        </p>
-        <p>
-          <strong> Url: </strong>
-          {this.props.url}
-        </p>
-        <div className="row">
-          <div className="button u-pull-left" onClick={this.destroyLink}>
-            Delete
-          </div>
-          <p className="u-pull-right">
-            <strong>Aggregate Votes: </strong>
-            {this.props.votesCount}
+        <div>
+          <p className="hover" onClick={this.showFullInfo}>
+            <strong> Link: </strong>
+            {this.props.title}
           </p>
+          <p className="hover" onClick={this.showFullInfo}>
+            <strong> Url: </strong>
+            {this.props.url}
+          </p>
+        </div>
+        <div className="row">
+          <CreateVote voteType={"Link"}
+                      voteId={this.props.id}
+                      votesCount={this.props.votesCount}/>
+        </div>
+        <div className="hidden full-info">
+        <div onClick={this.destroyLink} className="button">
+          Delete Link
+        </div>
         </div>
       </div>
     );

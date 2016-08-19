@@ -22,3 +22,13 @@
     margin: .25em .5em;
   }
 }
+
+.hidden {
+  display: none;
+}
+
+.hover {
+  &:hover {
+    cursor: pointer;
+  }
+}
