@@ -53,6 +53,7 @@ gem 'react-rails'
 gem 'slim-rails'
 gem 'faker'
 group :development, :test do
+  gem 'rails-controller-testing'
   gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rake'
