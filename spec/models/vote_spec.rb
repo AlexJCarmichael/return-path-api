@@ -6,14 +6,13 @@ RSpec.describe Vote, type: :model do
   end
 
   it "is valid with down votes" do
-    link = Link.create(url: "My cool url", title: "My cool title")
-    expect(Vote.create(votable_id: link.id, votable_type: "Link", vote_type: "down")).to be_valid
+    expect(FactoryGirl.create(:vote, vote_type: "down")).to be_valid
   end
 
   it "is valid with comments" do
     link = Link.create(url: "My cool url", title: "My cool title")
     comment = Comment.create(body: "My cool body", link: link)
-    expect(Vote.create(votable_id: comment.id, votable_type: "Comment", vote_type: "down")).to be_valid
+    expect(FactoryGirl.create(:vote, votable: comment)).to be_valid
   end
 
   it "is valid with lowercase votable_type" do
