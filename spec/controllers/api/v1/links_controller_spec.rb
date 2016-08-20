@@ -50,6 +50,16 @@ RSpec.describe Api::V1::LinksController do
         expect(parsed_response["data"]["url"]).to eq("test_url")
       end
     end
+
+    context "missing attributes" do
+      it "fails to create a link" do
+        expect {
+          post :create, params: { links: { url: "My cool url" } }
+        }.to change(Link, :count).by(0)
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response["response"]).to eq("Link could not be created")
+      end
+    end
   end
 
   describe "DELETE destroy" do

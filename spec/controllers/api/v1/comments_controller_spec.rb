@@ -51,6 +51,17 @@ RSpec.describe Api::V1::CommentsController do
         expect(parsed_response["data"]["body"]).to eq("My cool body")
       end
     end
+
+    context "missing attributes" do
+      it "fails to create a comment" do
+        link = Link.create(url: "My cool url", title: "My cool title")
+        expect {
+          post :create, params: { comment: { link_id: link.id } }
+        }.to change(Comment, :count).by(0)
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response["response"]).to eq("Comment could not be created")
+      end
+    end
   end
 
   describe "DELETE destroy" do
