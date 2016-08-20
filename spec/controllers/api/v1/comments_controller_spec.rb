@@ -42,12 +42,13 @@ RSpec.describe Api::V1::CommentsController do
   describe "POST create" do
     context "given proper attributes" do
         it "creates a new comment" do
+        link = Link.create(url: "My cool url", title: "My cool title")
         expect {
-          post :create, params: { comments: FactoryGirl.attributes_for(:comment) }
-        }.to change(comment, :count).by(1)
+          post :create, params: { comment: { body: "My cool body", link_id: link.id } }
+        }.to change(Comment, :count).by(1)
         expect(response).to be_success
         parsed_response = JSON.parse(response.body)
-        expect(parsed_response["data"]["body"]).to eq("Comment Body")
+        expect(parsed_response["data"]["body"]).to eq("My cool body")
       end
     end
   end

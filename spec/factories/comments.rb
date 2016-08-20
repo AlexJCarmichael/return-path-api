@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :comment do
     body "Comment body"
-    link 1
+    link
   end
 end
