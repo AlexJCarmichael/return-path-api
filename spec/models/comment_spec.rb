@@ -24,7 +24,7 @@ RSpec.describe Comment, type: :model do
     expect(comment.aggregate_vote_count).to be_between(-4, 4).inclusive
   end
 
-  it "has a vote coint in JSON" do
+  it "has a vote count in JSON" do
     comment = FactoryGirl.create(:comment_with_votes)
     expect(comment.as_json["aggregate_vote_count"]).to be_between(-4, 4).inclusive
   end

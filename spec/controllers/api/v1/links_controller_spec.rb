@@ -13,6 +13,15 @@ RSpec.describe Api::V1::LinksController do
       parsed_response = JSON.parse(response.body)
       expect(parsed_response["data"].length).to eq(5)
     end
+
+    it "returns sorted links" do
+      FactoryGirl.create_list(:link_with_votes, 5)
+      get :index, format: :json
+      parsed_response = JSON.parse(response.body)
+      expected = parsed_response["data"].first["aggregate_vote_count"]
+      compare =parsed_response["data"].second["aggregate_vote_count"]
+      expect(expected).to_not be < compare
+    end
   end
 
   describe "GET show" do
