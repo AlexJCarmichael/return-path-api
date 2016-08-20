@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :link do
-    url "MyString"
-    title "MyString"
+    url "test_url"
+    title "test_title"
   end
 end
