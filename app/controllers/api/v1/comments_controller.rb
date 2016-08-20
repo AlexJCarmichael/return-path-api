@@ -1,7 +1,7 @@
 class Api::V1::CommentsController < ApplicationController
   def index
     render json: { response: "Success",
-                   data: Comment.all.sort_by { |comment| comment.aggregate_vote_count * -1 } }
+                   data: Comment.all.order(created_at: :desc) }
   end
 
   def show

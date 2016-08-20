@@ -1,7 +1,7 @@
 class Api::V1::VotesController < ApplicationController
   def index
     render json: { response: "Success",
-                   data: Vote.all }
+                   data: Vote.all.order(created_at: :desc) }
   end
 
   def show
